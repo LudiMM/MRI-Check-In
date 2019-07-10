@@ -51,6 +51,19 @@ class Screen5 extends React.Component {
     this.handleShift = this.handleShift.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.classes = props.classes;
+    this.language = props.language;
+    this.text = "Please enter your first name:";
+    this.placehold = "Tap on the virtual keyboard to start"
+    if (this.language == "DE") {
+      this.text = "Bitte geben Sie Ihren Vornamen ein:"
+      this.placehold = "Nutzen Sie zur Eingabe die Tastatur"
+    } else if (this.language == "TR") {
+      this.text = "Lutfen adinizi giriniz"
+      this.placehold = "Baslamak icin klavyeye dokununuz."
+    } else if (this.language == "AL") {
+      this.text = "Ju lutem jepni emrin tuaj:"
+      this.placehold = "Prekni tastieren per te filluar"
+    }
   }
   //   const classes = useStyles();
 
@@ -92,6 +105,8 @@ class Screen5 extends React.Component {
     );
   };
 
+
+
   render() {
     return (
       <React.Fragment>
@@ -99,13 +114,13 @@ class Screen5 extends React.Component {
           <Grid container className={this.classes.container}>
             <Grid item className={this.classes.item}>
               <Typography variant="h3" color="black">
-                Please enter your firstname:
+                {this.text}
               </Typography>
             </Grid>
             <Grid item className={this.classes.item}>
               <Input
                 value={this.state.input}
-                placeholder={'Tap on the virtual keyboard to start'}
+                placeholder={this.placehold}
                 onChange={e => this.onChangeInput(e)}
                 style={{ width: '250px' }}
               />

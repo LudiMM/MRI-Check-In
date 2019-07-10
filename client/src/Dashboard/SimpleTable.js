@@ -29,14 +29,15 @@ export default function SimpleTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell align="left">Firstname</TableCell>
-            <TableCell align="left">Lastname</TableCell>
+            <TableCell align="left">First name</TableCell>
+            <TableCell align="left">Last name</TableCell>
             <TableCell align="left">Address</TableCell>
             <TableCell align="left">Insurance card number</TableCell>
             <TableCell align="left">Date of birth</TableCell>
             <TableCell align="left">Gender</TableCell>
             <TableCell align="left">Complaint</TableCell>
             <TableCell align="left">Level of pain</TableCell>
+            <TableCell align="left">Registration Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,7 +50,8 @@ export default function SimpleTable(props) {
               <TableCell align="left">{row.data.dateBirth}</TableCell>
               <TableCell align="left">{row.data.gender}</TableCell>
               <TableCell align="left">{row.data.complaint}</TableCell>
-              <TableCell align="left">{row.data.painlevel}</TableCell>
+              <TableCell align="left">{row.data.painLevel}</TableCell>
+              <TableCell align="left">{row.data.ticketNr}</TableCell>
             </TableRow>
           ))}
         </TableBody>

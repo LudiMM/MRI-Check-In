@@ -51,7 +51,26 @@ class Screen11 extends React.Component {
     };
     
     this.classes = props.classes;
+    this.language = props.language;
+    this.text1 = "Thank you very much for taking the time and using the self check-in terminal!";
+    this.text2 = <div>Your registration number is:</div>;
+    this.button = "Finish registration now"
+    if (this.language == "DE") {
+      this.text1 = "Vielen Dank, dass Sie sich die Zeit genommen haben und sich mit dem Self Check-In Terminal angemeldet haben!"
+      this.text2 = <div>Ihre Registrierungsnummer lautet:</div>
+      this.button = "Registrierung abschließen"
+    } else if (this.language == "TR") {
+      this.text1 = "Kayit islemi basariyla gerceklesti, zaman ayirdiginiz icin tesekkur ederiz."
+      this.text2 = <div>Kayit numaraniz</div>
+      this.button = "Simdi sonlandir"
+    } else if (this.language == "AL") {
+      this.text1 = "Faleminderit per kohen qe moret per te perdorur systemin tone te regjistrimit!"
+      this.text2 = <div>Numri juaj I pritjes eshte:</div>
+      this.button = "Mbaroni ketu regjistrimin tuaj"
+    }
   }
+
+
 
   //   const classes = useStyles();
   render() {
@@ -61,20 +80,16 @@ class Screen11 extends React.Component {
         <Grid container className={this.classes.container}>
           <Grid item className={this.classes.item}>
             <Typography variant="h3" color="black">
-              Thank you very much for taking the time and using the self check-in
-              terminal!
-            </Typography>
-          </Grid>
-          <Grid item className={this.classes.item}>
-            <Typography variant="h3" color="black">
-              Your registration number is:
+              {this.text1}
             </Typography>
           </Grid>
 	  <Grid item className={this.classes.item}>
             <Typography variant="h3" color="black">
-            <div>Your ticket number is:</div>
+            {this.text2}
+            </Typography>
+            <Typography variant="h1" color="black">
             <div id="ticketNumber">{this.state.number}</div>
-            <Button id="finish" onClick={this.props.storeTicketNumber} value={this.state.number}>Finish registration now</Button>
+            <Button id="finish" onClick={this.props.storeTicketNumber} value={this.state.number}>{this.button}</Button>
             </Typography>
           </Grid>
         </Grid>

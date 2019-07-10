@@ -11,6 +11,9 @@ import {
 import { makeStyles, withStyles } from '@material-ui/styles';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const styles = theme => ({
   root: {
@@ -44,21 +47,44 @@ class Screen8 extends React.Component {
     super(props);
     this.state = {
       input: '',
-      layoutName: 'default'
+      layoutName: 'default',
+      startDate: new Date()
     };
+
+    this.onDateChange = this.onDateChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.handleShift = this.handleShift.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.classes = props.classes;
+    
+    this.language = props.language;
+    this.text = "Please enter your date of birth:";
+    this.placehold = "Tap on the virtual keyboard to start"
+    if (this.language == "DE") {
+      this.text = "Bitte geben Sie Ihr Geburtsdatum ein:"
+      this.placehold = "Nutzen Sie zur Eingabe die Tastatur"
+    } else if (this.language == "TR") {
+      this.text = "Lutfen dogum tarihinizi giriniz:"
+      this.placehold = "Baslamak icin klavyeye dokununuz."
+    } else if (this.language == "AL") {
+      this.text = "Ju lutem Jepni datelindjen tuaj:"
+      this.placehold = "Prekni tastieren per te filluar"
+    }
   }
   //   const classes = useStyles();
-
+  
   onChange = input => {
     this.setState({
       input: input
     });
     console.log('Input changed', input);
+  };
+
+  onDateChange(date) {
+    this.setState({
+      startDate: date
+    });
   };
 
   onKeyPress = button => {
@@ -92,6 +118,7 @@ class Screen8 extends React.Component {
     );
   };
 
+
   render() {
     return (
       <React.Fragment>
@@ -99,13 +126,18 @@ class Screen8 extends React.Component {
           <Grid container className={this.classes.container}>
             <Grid item className={this.classes.item}>
               <Typography variant="h3" color="black">
-                Please enter your date of birth:
+                {this.text}
               </Typography>
             </Grid>
             <Grid item className={this.classes.item}>
+              {/* {<DatePicker
+                selected={this.state.startDate}
+                onChange={e => this.onDateChange(e)}
+                style={{width: "250px"}}
+              />} */}
               <Input
                 value={this.state.input}
-                placeholder={'Tap on the virtual keyboard to start'}
+                placeholder={this.placehold}
                 onChange={e => this.onChangeInput(e)}
                 style={{ width: '250px' }}
               />

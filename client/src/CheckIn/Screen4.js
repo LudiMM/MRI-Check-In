@@ -51,6 +51,19 @@ class Screen4 extends React.Component {
     this.handleShift = this.handleShift.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.classes = props.classes;
+    this.language = props.language;
+    this.text = "Please enter your insurance card number:";
+    this.placehold = "Tap on the virtual keyboard to start";
+    if (this.language == "DE") {
+      this.text = "Bitte geben Sie die Nummer Ihrer Krankenversichertenkarten ein:"
+      this.placehold = "Nutzen Sie zur Eingabe die Tastatur"
+    } else if (this.language == "TR") {
+      this.text = "Sigorta numaranizi giriniz:"
+      this.placehold = "Baslamak icin klavyeye dokununuz."
+    } else if (this.language == "AL") {
+      this.text = "Ju lutem jepni numrin tuaj te sigurimeve:"
+      this.placehold = "Prekni tastieren per te filluar"
+    }
   }
   //   const classes = useStyles();
 
@@ -93,6 +106,8 @@ class Screen4 extends React.Component {
     );
   };
 
+
+
   render() {
     return (
       <React.Fragment>
@@ -100,13 +115,13 @@ class Screen4 extends React.Component {
           <Grid container className={this.classes.container}>
             <Grid item className={this.classes.item}>
               <Typography variant="h3" color="black">
-                Please enter your insurance card:
+                {this.text}
               </Typography>
             </Grid>
             <Grid item className={this.classes.item}>
               <Input
                 value={this.state.input}
-                placeholder={'Tap on the virtual keyboard to start'}
+                placeholder={this.placehold}
                 onChange={e => this.onChangeInput(e)}
                 style={{ width: '250px' }}
               />

@@ -53,6 +53,27 @@ const useStyles = makeStyles(theme => ({
 
 export default function Screen7(props) {
   const classes = useStyles();
+  let language = props.language
+  let text = "Please choose your gender:"
+  let button1 = "male"
+  let button2 = "female"
+  let button3 = "Cancel"
+  if (language == "DE") {
+    text = "Bitte wählen Sie Ihr Geschlecht:"
+    button1 = "männlich"
+    button2 = "weiblich"
+    button3 = "Abbruch"
+  } else if (language == "TR") {
+    text = "Cinsiyetinizi seciniz:"
+    button1 = "erkek"
+    button2 = "kadin"
+    button3 = "Iptal"
+  } else if (language == "AL") {
+    text = "Zgjidhni gjinine tuaj:"
+    button1 = "mashkull"
+    button2 = "femer"
+    button3 = "Anullo"
+  }
   return (
     <Container>
       <Grid
@@ -63,7 +84,7 @@ export default function Screen7(props) {
       >
         <Grid item className={classes.item}>
           <Typography variant="h3" color="black">
-            Please choose your gender:
+            {text}
             <Box className={classes.Box} />
           </Typography>
         </Grid>
@@ -77,7 +98,7 @@ export default function Screen7(props) {
               className={classes.Button}
               value="male"
             >
-              Male
+              {button1}
             </Button>
           </Box>
         </Grid>
@@ -90,7 +111,7 @@ export default function Screen7(props) {
               className={classes.Button}
               value="female"
             >
-              Female
+              {button2}
             </Button>
           </Box>
         </Grid>
@@ -103,7 +124,7 @@ export default function Screen7(props) {
               onClick={props.storeGender}
               className={classes.Button}
             >
-              Cancel
+              {button3}
             </Button>
           </Box>
         </Grid>

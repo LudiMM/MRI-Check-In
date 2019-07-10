@@ -73,7 +73,8 @@ class CheckIn extends React.Component {
   storeLanguage(e){
     let input = e.currentTarget.value
     console.log(input)
-    this.setState({language: input})
+    this.setState({ language: input })
+    //window.location.reload();
   }
   storeInsuranceCard(input) {
     console.log(input);
@@ -115,7 +116,7 @@ class CheckIn extends React.Component {
 
   storePainLevel(e) {
     let input = e.currentTarget.value;
-    this.setState({ painlevel: input,
+    this.setState({ painLevel: input,
                     checkInProgress: 12 });
   }
 
@@ -155,16 +156,29 @@ class CheckIn extends React.Component {
 
     if (this.state.checkInProgress === 1) {
       component = (
-        <Screen1 Back={this.handleCancel} Next={this.handleCheckInProgress} storeLanguage={this.storeLanguage} />
+        <Screen1 
+        Back={this.handleCancel} 
+        Next={this.handleCheckInProgress} 
+        language = {this.state.language} 
+        storeLanguage={this.storeLanguage}
+        />
       );
     } else if (this.state.checkInProgress === 2) {
       component = (
-        <Screen2 Back={this.handleCancel} Next={this.handleCheckInProgress} />
+        <Screen2 
+         Back={this.handleCancel} 
+         Next={this.handleCheckInProgress} 
+         language = {this.state.language} 
+         />
       );
     } else if (this.state.checkInProgress === 3) {
       component = (
         this.setState({ checkInProgress: this.state.checkInProgress + 1 })
-      //  <Screen3 Back={this.handleCancel} Next={this.handleCheckInProgress} />
+        // <Screen3 
+        //   Back={this.handleCancel} 
+        //   Next={this.handleCheckInProgress}
+        //   language = {this.state.language}
+        // />
       );
     } else if (this.state.checkInProgress === 4) {
       component = (
@@ -172,6 +186,7 @@ class CheckIn extends React.Component {
           storeInsuranceCard={this.storeInsuranceCard}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 5) {
@@ -180,6 +195,7 @@ class CheckIn extends React.Component {
           storeFirstName={this.storeFirstName}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 6) {
@@ -188,6 +204,7 @@ class CheckIn extends React.Component {
           storeLastName={this.storeLastName}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 7) {
@@ -196,6 +213,7 @@ class CheckIn extends React.Component {
           storeGender={this.storeGender}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 8) {
@@ -204,6 +222,7 @@ class CheckIn extends React.Component {
           storeDateBirth={this.storeDateBirth}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 9) {
@@ -212,6 +231,7 @@ class CheckIn extends React.Component {
           storeAddress={this.storeAddress}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 10) {
@@ -220,6 +240,7 @@ class CheckIn extends React.Component {
           storeComplaint={this.storeComplaint}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 11) {
@@ -228,6 +249,7 @@ class CheckIn extends React.Component {
           storePainLevel={this.storePainLevel}
           Back={this.handleCancel}
           Next={this.handleCheckInProgress}
+          language = {this.state.language} 
         />
       );
     } else if (this.state.checkInProgress === 12) {
@@ -235,7 +257,8 @@ class CheckIn extends React.Component {
         <Screen12 
           storeTicketNumber = {this.storeTicketNumber}
           Back={this.handleCancel} 
-          Next={this.handleCheckInProgress} 
+          Next={this.handleCheckInProgress}
+          language = {this.state.language}  
         />
       );
     }

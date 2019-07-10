@@ -1,4 +1,4 @@
-//Screen3 is gonna be added for scanning the insurance car.
+//Screen3 is gonna be added for scanning the insurance card.
 import React from 'react';
 import {
   Container,
@@ -54,12 +54,29 @@ const useStyles = makeStyles(theme => ({
 
 export default function Screen3(props) {
   const classes = useStyles();
+  let language = props.language;
+  let text = "Do you have your insurance card?";
+  let button1 = "Yes, scan";
+  let button2 = "No, manual input";
+  if (language == "DE") {
+    text = "Haben Sie Ihre Krankenversichertenkarte dabei?";
+    button1 = "Ja, scannen";
+    button2 = "Nein, manuelle Eingabe"
+  } else if (language == "TR") {
+    text = "";
+    button1 = "";
+    button2 = ""
+  } else if (language == "AL") {
+    text = "";
+    button1 = "";
+    button2 = ""
+  }
   return (
     <Container>
       <Grid container className={classes.container}>
         <Grid item className={classes.item}>
           <Typography variant="h3" color="black" align="center">
-            Do you have your insurance card?
+            {text}
           </Typography>
         </Grid>
 
@@ -71,7 +88,7 @@ export default function Screen3(props) {
               onClick={props.Next}
               className={classes.Button}
             >
-              Yes, scan
+              {button1}
             </Button>
           </Box>
         </Grid>
@@ -83,7 +100,7 @@ export default function Screen3(props) {
               onClick={props.Next}
               className={classes.Button}
             >
-              No, manual input
+              {button2}
             </Button>
           </Box>
         </Grid>

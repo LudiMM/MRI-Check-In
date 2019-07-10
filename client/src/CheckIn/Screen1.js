@@ -49,18 +49,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Screen1(props) {
+
   const classes = useStyles();
+  let language = props.language
+  let header = "Welcome to MRI!"
+  let text = "This is the start of your check-in in our emergency department."
+  let button = "Check-In now"
+  if (language == "DE") {
+    header = "Willkommen am MRI!";
+    text = "Registrieren Sie sich hier in unserer Notaufnahme.";
+    button = "Jetzt anmelden";
+  } else if (language == "TR") {
+    header = "MRI`ya Hosgeldiniz!"
+    text = "Acil servis check-ininize buradan baslayin."
+    button = "Simdi basla"
+  } else if (language == "AL") {
+    header = "Miresevini ne MRI!"
+    text = "Ky eshte fillimi i regjistrimit ne sistemin tone te emergjences."
+    button = "Regjistrohu tani"
+  }
+
   return (
     <Container>
       <Grid container className={classes.container}>
         <Grid item className={classes.item}>
           <Typography variant="h1" color="black">
-            Welcome to MRI!
+            {header}
           </Typography>
         </Grid>
         <Grid item className={classes.item}>
           <Typography variant="h3" color="black">
-            This is the start of your checkin in our emergency department.
+            {text}
           </Typography>
         </Grid>
         <Grid item className={classes.item}>
@@ -71,14 +90,14 @@ export default function Screen1(props) {
             onClick={props.Next}
             size="large"
           >
-            Check in now
+            {button}
           </Button>
           <Box className={classes.Box3}>
             <Button
               variant="contained"
               color="primary"
               size="large"
-              onClick={props.storeLanguage} value={"EN"}
+              onClick={props.storeLanguage } value="EN"
             >
               EN
             </Button>
@@ -86,9 +105,25 @@ export default function Screen1(props) {
               variant="contained"
               color="primary"
               size="large"
-              onClick={props.storeLanguage} value={"DE"}
+              onClick={props.storeLanguage } value="DE"
             >
               DE
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={props.storeLanguage } value="TR"
+            >
+              TR
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={props.storeLanguage } value="AL"
+            >
+              AL
             </Button>
           </Box>
         </Grid>

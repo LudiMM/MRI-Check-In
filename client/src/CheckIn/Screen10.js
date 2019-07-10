@@ -51,6 +51,19 @@ class Screen10 extends React.Component {
     this.handleShift = this.handleShift.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.classes = props.classes;
+    this.language = props.language;
+    this.text = "What is your complaint?";
+    this.placehold = "Tap on the virtual keyboard to start"
+    if (this.language == "DE") {
+      this.text = "Welche Beschwerden haben Sie?"
+      this.placehold = "Nutzen Sie zur Eingabe die Tastatur"
+    } else if (this.language == "TR") {
+      this.text = "Sikayetinizi kisaca belirtiniz?"
+      this.placehold = "Baslamak icin klavyeye dokununuz."
+    } else if (this.language == "AL") {
+      this.text = "Cili eshte shqetesimi qe keni ?"
+      this.placehold = "Prekni tastieren per te filluar"
+    }
   }
   //   const classes = useStyles();
 
@@ -99,13 +112,13 @@ class Screen10 extends React.Component {
           <Grid container className={this.classes.container}>
             <Grid item className={this.classes.item}>
               <Typography variant="h3" color="black">
-                What is your complaint?
+                {this.text}
               </Typography>
             </Grid>
             <Grid item className={this.classes.item}>
               <Input
                 value={this.state.input}
-                placeholder={'Tap on the virtual keyboard to start'}
+                placeholder={this.placehold}
                 onChange={e => this.onChangeInput(e)}
                 style={{ width: '250px' }}
               />

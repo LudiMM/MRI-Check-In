@@ -56,14 +56,58 @@ const useStyles = makeStyles(theme => ({
 
 export default function Screen2(props) {
   const classes = useStyles();
-  let text;
-
-  if (props.language == "EN") {
-    console.log("EN")
-    text = <li>If you have... </li>
-  } else {
-    text = <li>Falls du... </li>
-  }
+  let language = props.language
+  let text = "If you have any of the following, please press 'cancel' and go to the Check-In Desk.";
+  let list = <ul>
+          <li>Headache</li>
+          <li>Chest Pain</li>
+          <li>Difficulty with speech</li>
+          <li>Shortness of breath</li>
+          <li>Sudden weakness in arms or legs</li>
+          <li>Severe Bleeding</li>
+        </ul>
+  let button1 = "Cancel"
+  let button2 = "Continue"
+  if (language == "DE") {
+    console.log({language})
+    text = "Falls Sie eine der folgenden Beschwerden haben, klicken Sie bitte auf 'Abbruch' und gehen Sie zur Patientenanmeldung.";
+    list = <ul>
+            <li>Kopfschmerzen</li>
+            <li>Schmerzen in der Brust</li>
+            <li>Artikualationsprobleme</li>
+            <li>Atemnot</li>
+            <li>Plötzlich auftretende Schwäche in Armen oder Beinen</li>
+            <li>Starke Blutung</li>
+          </ul>;
+    button1 = "Abbruch";
+    button2 = "Weiter";
+  } else if (language == "TR") {
+    console.log({language})
+    text = "Asagidaki sikayetlerden herhangi birine sahipseniz, lutfen islemi 'iptal' edip resepsiyona gidiniz.";
+    list = <ul>
+            <li>Basagrisi</li>
+            <li>Gogus Agrisi</li>
+            <li>Konusma zorlugu</li>
+            <li>Nefes alma zorlugu</li>
+            <li>El, ayak uyusuklugu</li>
+            <li>Kanama</li>
+          </ul>;
+    button1 = "Iptal";
+    button2 = "Devam";
+  } else if (language == "AL") {
+    console.log({language})
+    text = "Nese keni ndonje nga keto simptoma ju lutem shtypni 'anullo' dhe  shkoni ne zyren e recepsionit per tu regjistruar.";
+    list = <ul>
+          <li>Dhimbje Koke</li>
+          <li>Dhimbje Kraharori</li>
+          <li>Veshtiresi per te folur</li>
+          <li>Probleme me frymemarjen</li>
+          <li>Pandjeshmeri ne kembe ose duar</li>
+          <li>Gjakderdhje te shumte</li>
+        </ul>;
+  button1 = "Anullo";
+  button2 = "Vashdo";
+}
   return (
     <Container>
       <Grid container className={classes.container}>
@@ -74,16 +118,10 @@ export default function Screen2(props) {
         </Grid> */}
         <Grid item className={classes.item}>
           <Typography variant="h3" color="black">
-            text
+            {text}
+            
             <Box className={classes.Box1}>
-              <ul>
-                <li>{text}</li>
-                <li>Chest Pain</li>
-                <li>Difficulty with speech</li>
-                <li>Shortness of breath</li>
-                <li>Sudden weakness in arms or legs</li>
-                <li>Severe Bleeding</li>
-              </ul>
+              {list}
             </Box>
           </Typography>
         </Grid>
@@ -95,7 +133,7 @@ export default function Screen2(props) {
               onClick={props.Back}
               className={classes.Button}
             >
-              Cancel
+              {button1}
             </Button>
           </Box>
         </Grid>
@@ -107,7 +145,7 @@ export default function Screen2(props) {
               onClick={props.Next}
               className={classes.Button}
             >
-              Continue
+              {button2}
             </Button>
           </Box>
         </Grid>

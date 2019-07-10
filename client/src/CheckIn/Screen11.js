@@ -51,6 +51,15 @@ class Screen10 extends React.Component {
     this.handleShift = this.handleShift.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.classes = props.classes;
+    this.language = props.language;
+    this.text = "What is your level of pain?";
+    if (this.language == "DE") {
+      this.text = "Wie stark sind Ihre Schmerzen?"
+    } else if (this.language == "TR") {
+      this.text = "Agri seviyenizi giriniz?"
+    } else if (this.language == "AL") {
+      this.text = "Cili eshte niveli I dhimbjes?"
+    }
   }
   //   const classes = useStyles();
 
@@ -91,13 +100,15 @@ class Screen10 extends React.Component {
     );
   };
 
+
+
   render() {
     return (
       <Container>
         <Grid container className={this.classes.container}>
           <Grid item className={this.classes.item}>
             <Typography variant="h3" color="black">
-              Choose your level of pain?
+              {this.text}
             </Typography>
           </Grid>
           <Grid item className={this.classes.item}>
