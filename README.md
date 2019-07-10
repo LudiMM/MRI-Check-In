@@ -7,7 +7,7 @@ https://docs.docker.com/docker-for-mac/install/
 https://ngrok.com/download
 
 ## 4. Clone github repo
-Download link (no signup necessary) https://github.com/LudiMM/MRI-Check-In/archive/master.zip https://
+Download link (no signup necessary) https://github.com/LudiMM/MRI-Check-In/archive/master.zip
 
 ## 5. Extract folder and switch to highest level (same level as docker-compose.yml)
 Open `Terminal` and use `cd` to switch directories
